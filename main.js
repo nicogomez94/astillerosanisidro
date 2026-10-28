@@ -64,18 +64,6 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 const contactForm = document.getElementById('contact-form');
 const formStatus = document.getElementById('form-status');
-const whatsappShortcut = document.querySelector('.whatsapp');
-
-if ('IntersectionObserver' in window) {
-  const shortcutObserver = new IntersectionObserver(
-    ([entry]) => {
-      whatsappShortcut.classList.toggle('is-hidden', entry.isIntersecting);
-    },
-    { threshold: 0.05 }
-  );
-  shortcutObserver.observe(document.getElementById('consulta'));
-}
-
 contactForm.querySelectorAll('input, textarea').forEach((field) => {
   field.addEventListener('input', () => {
     field.removeAttribute('aria-invalid');

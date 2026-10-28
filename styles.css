@@ -840,20 +840,6 @@ img {
   line-height: 1.7;
 }
 
-.inquiry-mark {
-  display: grid;
-  width: 95px;
-  height: 95px;
-  margin-top: 74px;
-  place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 50%;
-  color: var(--blue-light);
-  font-family: "Arial Black", Arial, sans-serif;
-  font-size: 23px;
-  letter-spacing: -0.05em;
-}
-
 .contact-form {
   padding: 40px;
   border: 1px solid rgba(95, 155, 175, 0.22);
@@ -1068,12 +1054,6 @@ img {
 
 .whatsapp:hover {
   transform: translateY(-4px);
-}
-
-.whatsapp.is-hidden {
-  transform: translateY(10px);
-  opacity: 0;
-  pointer-events: none;
 }
 
 .whatsapp img {
@@ -1419,10 +1399,6 @@ img {
   .inquiry-copy h2 {
     max-width: 590px;
     font-size: 42px;
-  }
-
-  .inquiry-mark {
-    display: none;
   }
 
   .form-bottom {
