@@ -62,6 +62,73 @@ siteNav.querySelectorAll('a').forEach((link) => {
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
+const contactForm = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
+const whatsappShortcut = document.querySelector('.whatsapp');
+
+if ('IntersectionObserver' in window) {
+  const shortcutObserver = new IntersectionObserver(
+    ([entry]) => {
+      whatsappShortcut.classList.toggle('is-hidden', entry.isIntersecting);
+    },
+    { threshold: 0.05 }
+  );
+  shortcutObserver.observe(document.getElementById('consulta'));
+}
+
+contactForm.querySelectorAll('input, textarea').forEach((field) => {
+  field.addEventListener('input', () => {
+    field.removeAttribute('aria-invalid');
+    formStatus.textContent = '';
+  });
+});
+
+contactForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const nameField = contactForm.elements.name;
+  const emailField = contactForm.elements.email;
+  const messageField = contactForm.elements.message;
+  const name = nameField.value.trim();
+  const email = emailField.value.trim();
+  const phone = contactForm.elements.phone.value.trim();
+  const interest = contactForm.elements.interest.value;
+  const message = messageField.value.trim();
+
+  const requiredFields = [
+    [nameField, name],
+    [emailField, email],
+    [messageField, message],
+  ];
+  const emptyField = requiredFields.find(([, value]) => !value);
+
+  if (emptyField) {
+    emptyField[0].setAttribute('aria-invalid', 'true');
+    emptyField[0].focus();
+    formStatus.textContent = 'Completá los campos obligatorios para continuar.';
+    return;
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    emailField.setAttribute('aria-invalid', 'true');
+    emailField.focus();
+    formStatus.textContent = 'Revisá que el email tenga un formato válido.';
+    return;
+  }
+
+  const details = [
+    'Hola, quiero consultar en Astillero San Isidro.',
+    `Nombre: ${name}`,
+    `Email: ${email}`,
+    ...(phone ? [`Teléfono: ${phone}`] : []),
+    ...(interest ? [`Me interesa: ${interest}`] : []),
+    `Mensaje: ${message}`,
+  ];
+
+  const whatsappUrl = `https://wa.me/541148973085?text=${encodeURIComponent(details.join('\n'))}`;
+  window.location.assign(whatsappUrl);
+});
+
 const revealElements = document.querySelectorAll('.fade-in');
 if ('IntersectionObserver' in window) {
   const revealObserver = new IntersectionObserver(

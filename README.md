@@ -8,6 +8,8 @@ Landing en HTML, CSS y JavaScript puro. Abrí `index.html` o serví la carpeta c
 - La paleta web aproxima los Pantone 7458 C, 549 C y 7413 C indicados en esa presentación.
 - La dirección y el teléfono también provienen del PPT.
 - Las embarcaciones de las imágenes son ilustrativas y no representan modelos específicos del astillero.
+- El formulario prepara un mensaje en WhatsApp; el visitante confirma el envío allí. No hay un destinatario de email configurado.
+- El ícono de WhatsApp proviene de [Bootstrap Icons](https://icons.getbootstrap.com/icons/whatsapp/) bajo licencia MIT; ver `assets/BOOTSTRAP-ICONS-LICENSE.txt`.
 
 ## Edición rápida
 
